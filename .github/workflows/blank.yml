@@ -37,5 +37,5 @@ jobs:
           ifconfig 
           pwd
           sudo docker ps 
-          sudo docker run --rm --name test  --privileged=true -v $pwd:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l" 
+          sudo docker run --rm --name test  --privileged=true -v  /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l" 
           
