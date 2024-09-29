@@ -40,7 +40,7 @@ jobs:
         if: ${{ success() && steps.build-linux.conclusion == 'success' }}
         env: 
             email: "sixue.cheng@deepcomputing.io"
-            url: ${{ steps.step_id.}}
+            url: ${{ steps.step_id}}
         run: |
           echo $email
           echo $url
