@@ -37,7 +37,7 @@ jobs:
           sudo docker ps 
           # sudo docker run --rm --name test  --privileged=true -v /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l"
       - name: send-mail
-        if: ${{ success() && steps.build-linux.conclusion == 'failure' }}
+        if: ${{ success() && steps.build-linux.conclusion == 'success' }}
         env: 
             email: "sixue.cheng@deepcomputing.io"
         run: |
