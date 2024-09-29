@@ -40,8 +40,10 @@ jobs:
         if: ${{ success() && steps.build-linux.conclusion == 'success' }}
         env: 
             email: "sixue.cheng@deepcomputing.io"
+            url: ${{ steps.step_id.}}
         run: |
           echo $email
+          echo $url
           echo "CI update code success ! https://github.com/DC-DeepComputing/test-action/actions" | mail -s "update code" $email
           
         
