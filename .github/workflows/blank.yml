@@ -42,6 +42,7 @@ jobs:
             email: "sixue.cheng@deepcomputing.io"
         run: |
           echo $email
+          echo "CI update code success ! https://github.com/DC-DeepComputing/test-action/actions" | mail -s "update code" $email
           
         
           
