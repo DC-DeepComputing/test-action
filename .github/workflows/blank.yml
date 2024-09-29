@@ -38,7 +38,7 @@ jobs:
           echo test, and deploy your project.
           ifconfig 
           pwd
-          echo "project"
+          echo $testname
           sudo docker ps 
           # sudo docker run --rm --name test  --privileged=true -v /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l" 
           
