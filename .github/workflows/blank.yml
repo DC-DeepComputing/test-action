@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - with:
+            mail: ${{ secrets.SEND_MAIL }}
       - name: build-linux
         id: build-linux
         env: 
@@ -38,14 +40,12 @@ jobs:
           # sudo docker run --rm --name test  --privileged=true -v /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l"
       - name: send-mail
         if: ${{ success() && steps.build-linux.conclusion == 'success' }}
-        env: 
-            url: ${{ steps.step_id}}
         run: |
           # echo $EMAIL
           echo $GITHUB_RUN_ID
           echo $SENDMAIL
-          echo $JOB_ID
-          echo "CI update code success ! $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/$JOB_ID" | mail -s "update code" sixue.cheng@deepcomputing.io
+          echo $mail
+          echo "CI update code success ! $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/$JOB_ID" | mail -s "update code" $mail
         
           
           
