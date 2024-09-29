@@ -44,6 +44,7 @@ jobs:
           # echo $EMAIL
           echo $GITHUB_RUN_ID
           echo $SENDMAIL
+          echo $GITHUB_JOB_ID
           echo "CI update code success ! $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" | mail -s "update code" sixue.cheng@deepcomputing.io
         
           
