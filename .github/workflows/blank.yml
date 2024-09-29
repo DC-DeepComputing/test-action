@@ -41,8 +41,9 @@ jobs:
         env: 
             url: ${{ steps.step_id}}
         run: |
-          echo $EMAIL
-          echo "CI update code success ! https://github.com/DC-DeepComputing/test-action/actions" | mail -s "update code" $EMAIL
+          # echo $EMAIL
+          echo $GITHUB_RUN_ID
+          # echo "CI update code success ! https://github.com/DC-DeepComputing/test-action/actions" | mail -s "update code" $EMAIL
           
         
           
