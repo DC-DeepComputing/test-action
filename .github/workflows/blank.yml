@@ -44,6 +44,7 @@ jobs:
         run: |
           echo $email
           echo $url
+          echo "Project Root: $GITHUB_WORKSPACE" 
           echo "CI update code success ! https://github.com/DC-DeepComputing/test-action/actions" | mail -s "update code" $email
           
         
