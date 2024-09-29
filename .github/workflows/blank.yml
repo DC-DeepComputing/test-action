@@ -24,13 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: build-linux
+        id: build-linux
         env: 
             testname: "3r455t5345"
         run: |
@@ -40,5 +35,14 @@ jobs:
           pwd
           echo $testname
           sudo docker ps 
-          # sudo docker run --rm --name test  --privileged=true -v /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l" 
+          # sudo docker run --rm --name test  --privileged=true -v /home/gitlab-runner/actions-runner/_work/test-action/test-action:/home  ubuntu:20.04 /bin/bash -c "cd /home && ls -l"
+      - name: send-mail
+        if: ${{ failure() && steps.build-linux.conclusion == 'failure' }}
+        env: 
+            email: "sixue.cheng@deepcomputing.io"
+        run: |
+          echo $email
+          
+        
+          
           
